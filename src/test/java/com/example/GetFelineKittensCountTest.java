@@ -1,21 +1,23 @@
 package com.example;
 
+import org.junit.Assert;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
 
-
-@RunWith(MockitoJUnitRunner.class)
 public class GetFelineKittensCountTest {
 
-    @Mock
-    Feline feline;
+    Feline feline = new Feline();
 
     @Test
     public void shouldGetFelineKittensCount() {
-        feline.getKittens(8);
-        Mockito.verify(feline).getKittens(8);
+        int expectedKittens = 3;
+        int actualKittens = feline.getKittens(3);
+        Assert.assertEquals("Вернулось некорректное число котят",expectedKittens,actualKittens);
+    }
+
+    @Test
+    public void shouldGetOneFelineKitten(){
+        int expectedKittens = 1;
+        int actualKittens = feline.getKittens();
+        Assert.assertEquals("Вернулось некорректное число котят",expectedKittens,actualKittens);
     }
 }

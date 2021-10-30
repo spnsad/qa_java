@@ -9,6 +9,7 @@ public class DoesUnknownLionHaveManeTest {
 
         try {
             new Lion(new Feline(), "Неопределившийся");
+            throw new Exception();
         } catch (Exception e) {
             e.printStackTrace();
             assertEquals("Используйте допустимые значения пола животного - самец или самка", e.getMessage());

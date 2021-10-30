@@ -7,13 +7,16 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import static org.junit.Assert.*;
-
+@RunWith(MockitoJUnitRunner.class)
 public class LionGetKittensTest {
+
+    @Mock
+    Feline feline;
 
     @Test
     public void shouldHasOneKitten() throws Exception {
-        Lion lion = new Lion(new Feline(), "Самец");
+        Mockito.when(feline.getKittens()).thenReturn(1);
+        Lion lion = new Lion(feline, "Самец");
         int expectedKittens = 1;
         int actualKittens = lion.getKittens();
         Assert.assertEquals("Количество детенышей отличается от ожидаемого",expectedKittens, actualKittens);
